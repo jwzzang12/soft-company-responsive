@@ -1,0 +1,88 @@
+<footer id="footer">
+  <div class="utilMenu">
+    <div class="container">
+      <ul class="util">
+        <li><a href="">회사소개</a></li>
+        <li><a href="">인재채용</a></li>
+        <li><a href="">찾아오시는 길</a></li>
+        <li><a href="">이용약관</a></li>
+        <li><a href="">개인정보처리방침 (공공기관)개인정보처리방침</a></li>
+      </ul>
+      <ul class="sns">
+        <li><a href="">네이버 블로그</a></li>
+        <li><a href="">유투브</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="addressBox">
+    <div class="container">
+      <div class="address">
+        <address>
+          <div>
+            <span>(주)맑은소프트</span>
+            <span>대표자 : 하근호</span>
+            <span>사업자등록번호 : 119-86-39050</span>
+            <span>개인정보관리책임자 : 김도형</span>
+          </div>
+          <div>
+            <span>본사 : 서울 구로구 디지털로 288 대륭포스트타워 1차 1701호</span>
+            <span>연구소 : 서울특별시 동대문구 전농로37길 40, 3층</span>
+            <span>이메일 : malgn@malgnsoft.com</span></div>
+        </address>
+        <P class="copyright">© MALGNSOFT INC. ALL RIGHTS RESERVED.</P>
+      </div>
+      <div class="tel">
+        <span class="title">고객센터</span>
+        <div class="info">
+          <strong>1666-3412</strong>
+          <p><span>상담시간</span> 평일 09:00~17:00</p>
+          <p><span>휴무일</span> 토요일,일요일,공휴일</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  const gnb = $("#gnb");
+  const header = $("#header");
+  const depth01 = $(".depth01");
+  const depth02 = $(".depth02");
+  const btnAll = $("#header .btnAll");
+
+  gnb.on("mouseenter", function () {
+    header.addClass("on");
+  });
+  gnb.on("mouseleave", function () {
+    header.removeClass("on");
+  });
+
+  btnAll.on("click",function(){
+    header.toggleClass("open");
+    depth02.slideUp();
+  });
+
+  depth01.on("click",function(){
+    if(header.hasClass("mobile")) {
+      const depth02 = $(this).next();
+      const siblings = $(this).parent().siblings().find(".depth02");
+      siblings.stop().slideUp();
+      depth02.stop().slideToggle();
+      return false
+    }
+  })
+
+  $(window).on("resize",function(){
+  const w = $(window).outerWidth();
+  if (w<=1200) {
+    header.addClass("mobile");
+  }else {
+    header.removeClass("mobile");
+    header.removeClass("open");
+    depth02.removeAttr("style")
+  }
+});
+$(window).trigger("resize")
+
+</script>
+</body>
+</html>
